@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omkar Dasari - Water Resource Management Specialist</title>
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --primary: #2980b9;
+            --secondary: #166088;
+            --accent: #3498db;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+        }
+
+        /* Basic Reset and Font */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Body Styling */
+        body {
+            background-color: #f5f5f5; /* Light grey background */
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Header Styling */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary)); /* Gradient background */
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        /* Navigation Styling */
+        nav {
+            background-color: var(--dark);
+            position: sticky; /* Make navbar sticky */
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 60px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--secondary);
+            border-bottom: 2px solid var(--accent); /* Accent underline */
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        /* Application Grid Layout */
+        .app-grid {
+            display: grid;
+            /* Responsive grid: fills columns, min width 350px */
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        /* Application Card Styling */
+        .app-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden; /* Ensures image corners are rounded */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Application Image Container */
+        .app-img {
+            height: 200px; /* Fixed height for consistency */
+            background-color: #e9ecef; /* Fallback background */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .app-img img {
+            width: 100%;  /* Make image fill container width */
+            height: 100%; /* Make image fill container height */
+            object-fit: cover; /* Cover the area, cropping if needed */
+        }
+
+        /* Application Details Section */
+        .app-details {
+            padding: 20px;
+        }
+
+        .app-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .app-description {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .app-subdesc {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        /* Tags Styling */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            background-color: #e9ecef;
+            color: var(--secondary);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        /* Application Links Styling */
+        .app-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .app-link {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .app-link:hover {
+            background-color: var(--secondary);
+        }
+
+        /* About Section Layout */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr; /* Image column, Text column */
+            gap: 40px;
+            align-items: start; /* Align items to the top */
+        }
+
+        .profile-img {
+            max-width: 100%;
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-color: #eee; /* Background color while loading/if error */
+        }
+
+        /* Skills Section */
+        .skills {
+            margin-top: 30px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .skill-tag {
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Education Section */
+        .education {
+            margin-top: 30px;
+        }
+
+        .education-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .education-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0; /* Remove margin if it's the last item */
+            padding-bottom: 0; /* Remove padding if it's the last item */
+        }
+
+        .degree {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .institution {
+            font-style: italic;
+        }
+
+        .year {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section Layout */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Form column, Info column */
+            gap: 40px;
+        }
+
+        /* Contact Form Styling */
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical; /* Allow vertical resize */
+        }
+
+        .contact-form button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: var(--secondary);
+        }
+
+        /* Contact Info Styling */
+        .contact-info {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            width: 40px; /* Adjusted size */
+            height: 40px; /* Adjusted size */
+            background-color: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.2rem; /* Size for emoji icons */
+            color: var(--secondary);
+        }
+
+        .contact-item h4 {
+            margin-bottom: 3px;
+            color: var(--dark);
+        }
+        .contact-item p {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        /* Social Links Styling */
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--light);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px; /* Vertically center emoji */
+            font-size: 1.2rem; /* Emoji size */
+            color: var(--secondary); /* Icon color */
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--accent);
+            color: white; /* Icon color on hover */
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px; /* Added margin top */
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive Design Adjustments */
+        @media (max-width: 992px) { /* Tablet breakpoint */
+             .about-content {
+                grid-template-columns: 1fr; /* Stack image and text */
+             }
+             .profile-img {
+                 max-width: 300px; /* Limit image size */
+                 margin: 0 auto 30px; /* Center image */
+                 display: block;
+             }
+             .contact-content {
+                grid-template-columns: 1fr; /* Stack form and info */
+            }
+        }
+
+        @media (max-width: 768px) { /* Mobile breakpoint */
+            h1 { font-size: 2rem; }
+            .tagline { font-size: 1rem; }
+            h2 { font-size: 1.8rem; }
+
+            .nav-container {
+                flex-direction: column; /* Stack logo and links */
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: space-around; /* Space out links */
+                padding: 0;
+            }
+
+            .nav-links li {
+                margin-left: 0;
+            }
+
+            .app-grid {
+                /* Ensure single column on small screens */
+                grid-template-columns: 1fr;
+            }
+
+            .about-content, .contact-content {
+                gap: 30px; /* Reduce gap */
+            }
+
+            .contact-info {
+                padding: 20px;
+            }
+
+            .footer-links a {
+                margin: 0 10px; /* Reduce footer link margin */
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Omkar Dasari</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#apps">Applications</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="home">
+        <div class="header-content">
+            <h1>Omkar Dasari</h1>
+            <p class="tagline">Hydrological Modeling  Specialist | GIS & Remote Sensing Expert</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="apps">
+            <h2>Water Resource Management Applications</h2>
+            <div class="app-grid">
+                <div class="app-card">
+                    <div class="app-img">
+                        <img src="https://drive.google.com/thumbnail?id=1MLa2tnrnECIQTM6-cOB8dnkQutUVb5EH&sz=s350"
+                             alt="AgroHydro Insights - Precision Crop Water Requirement Analyzer"
+                             onerror="this.onerror=null; this.src='https://placehold.co/350x200/a1c4fd/ffffff?text=AgroHydro+Insights';">
+                    </div>
+                    <div class="app-details">
+                        <h3 class="app-title">AgroHydro Insights</h3>
+                        <p class="app-description">Precision Crop Water Requirement Analyzer</p>
+                        <p class="app-subdesc">Advanced modeling of crop water needs, irrigation scheduling, and water use efficiency</p>
+                        <div class="tags">
+                            <span class="tag">GIS</span>
+                            <span class="tag">Remote Sensing</span>
+                            <span class="tag">Agriculture</span>
+                        </div>
+                        <div class="app-links">
+                            <a href="https://inner-domain-428114-g6.projects.earthengine.app/view/crop-water-requirement" target="_blank" class="app-link">Launch App</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-card">
+                    <div class="app-img">
+                         <img src="https://drive.google.com/thumbnail?id=1UmWvpLTdkVcPzsEHbOXkSIwb7Dy2McLy&sz=s350"
+                             alt="HydroBasin Dynamics - Rainfall & Runoff Geospatial Intelligence"
+                             onerror="this.onerror=null; this.src='https://placehold.co/350x200/a1c4fd/ffffff?text=HydroBasin+Dynamics';">
+                    </div>
+                    <div class="app-details">
+                        <h3 class="app-title">HydroBasin Dynamics</h3>
+                        <p class="app-description">Rainfall & Runoff Geospatial Intelligence</p>
+                        <p class="app-subdesc">Comprehensive analysis of hydrological processes in Indian sub-basins</p>
+                        <div class="tags">
+                            <span class="tag">Hydrology</span>
+                            <span class="tag">GIS</span>
+                            <span class="tag">Watershed</span>
+                        </div>
+                        <div class="app-links">
+                            <a href="https://inner-domain-428114-g6.projects.earthengine.app/view/indian-sub-basins" target="_blank" class="app-link">Launch App</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-card">
+                    <div class="app-img">
+                         <img src="https://drive.google.com/thumbnail?id=1J_4UXx-vWy6Nu96m94dOnB_NEYctOvZU&sz=s350"
+                             alt="WaterBalance Navigator - Integrated Water Resource Decision Support System"
+                             onerror="this.onerror=null; this.src='https://placehold.co/350x200/a1c4fd/ffffff?text=WaterBalance+Nav';">
+                    </div>
+                    <div class="app-details">
+                        <h3 class="app-title">WaterBalance Navigator</h3>
+                        <p class="app-description">Integrated Water Resource Decision Support System</p>
+                        <p class="app-subdesc">Strategic water balance assessment for sustainable water management</p>
+                        <div class="tags">
+                            <span class="tag">Water Resources</span>
+                            <span class="tag">Decision Support</span>
+                            <span class="tag">GIS</span>
+                        </div>
+                        <div class="app-links">
+                            <a href="https://inner-domain-428114-g6.projects.earthengine.app/view/water-balance-app" target="_blank" class="app-link">Launch App</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-card">
+                    <div class="app-img">
+                         <img src="https://drive.google.com/thumbnail?id=1XQq3hS21Yj00zKr8ia-3omWCi2iyTVl5&sz=s350"
+                             alt="GeoErosion Sentinel - District-Level Soil Erosion Mapping"
+                             onerror="this.onerror=null; this.src='https://placehold.co/350x200/a1c4fd/ffffff?text=GeoErosion+Sentinel';">
+                    </div>
+                    <div class="app-details">
+                        <h3 class="app-title">GeoErosion Sentinel</h3>
+                        <p class="app-description">District-Level Soil Erosion Mapping</p>
+                        <p class="app-subdesc">Precise spatial analysis of soil erosion risks and conservation strategies</p>
+                        <div class="tags">
+                            <span class="tag">Soil Conservation</span>
+                            <span class="tag">Remote Sensing</span>
+                            <span class="tag">GIS</span>
+                        </div>
+                        <div class="app-links">
+                            <a href="https://inner-domain-428114-g6.projects.earthengine.app/view/soil-erosion-estimation" target="_blank" class="app-link">Launch App</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-card">
+                    <div class="app-img">
+                          <img src="https://drive.google.com/thumbnail?id=1eOmTJnwbQE5kbl-k3F7Jtx9QuNQCht0V&sz=s350"
+                             alt="Aqua Recharge Mapper - Groundwater Potential Evaluation"
+                             onerror="this.onerror=null; this.src='https://placehold.co/350x200/a1c4fd/ffffff?text=Aqua+Recharge+Map';">
+                    </div>
+                    <div class="app-details">
+                        <h3 class="app-title">Aqua Recharge Mapper</h3>
+                        <p class="app-description">Groundwater Potential Evaluation</p>
+                        <p class="app-subdesc">Advanced groundwater recharge estimation and sustainable management</p>
+                        <div class="tags">
+                            <span class="tag">Groundwater</span>
+                            <span class="tag">Hydrology</span>
+                            <span class="tag">GIS</span>
+                        </div>
+                        <div class="app-links">
+                            <a href="https://find-mobile-locater.projects.earthengine.app/view/groundwater-recharge" target="_blank" class="app-link">Launch App</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-card">
+                    <div class="app-img">
+                         <img src="https://drive.google.com/thumbnail?id=1OLjKP-4b0-SUwh5ZYZkfk5gFpcWwDj_7&sz=s350"
+                             alt="EvapoTech Analyzer - Reference Evapotranspiration Insights"
+                             onerror="this.onerror=null; this.src='https://placehold.co/350x200/a1c4fd/ffffff?text=EvapoTech+Analyzer';">
+                    </div>
+                    <div class="app-details">
+                        <h3 class="app-title">EvapoTech Analyzer</h3>
+                        <p class="app-description">Reference Evapotranspiration Insights</p>
+                        <p class="app-subdesc">Precise evapotranspiration modeling for water resource optimization</p>
+                        <div class="tags">
+                            <span class="tag">Evapotranspiration</span>
+                            <span class="tag">Climate</span>
+                            <span class="tag">Water Management</span>
+                        </div>
+                        <div class="app-links">
+                            <a href="https://find-mobile-locater.projects.earthengine.app/view/ret" target="_blank" class="app-link">Launch App</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div>
+                     <img src="https://drive.google.com/thumbnail?id=1P321l87XLqTmrbWasPbmw-Yj9X1SwAsz&sz=s400"
+                         alt="Omkar Dasari"
+                         class="profile-img"
+                         onerror="this.onerror=null; this.src='https://placehold.co/400x400/cccccc/ffffff?text=Omkar+Dasari';">
+                </div>
+                <div>
+                    <p>I'm Omkar Dasari, a Soil and Water Engineering specialist with expertise in GIS, Remote Sensing, and Hydrological Modeling. My research focuses on analyzing water budget dynamics and identifying sustainable water management strategies using advanced geospatial technologies.</p>
+                    <p>Currently pursuing my Ph.D. at Tamil Nadu Agricultural University, I'm passionate about developing innovative solutions for water resource management challenges. My integrated approach combines field expertise with computational modeling to create practical applications for agricultural and environmental sustainability. I have also qualified the GATE Exam 2020 in Agricultural Engineering.</p>
+                    <div class="skills">
+                        <h3>Technical Expertise</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">MATLAB</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">R</span>
+                            <span class="skill-tag">ARC-GIS</span>
+                            <span class="skill-tag">QGIS</span>
+                            <span class="skill-tag">ERDAS</span>
+                            <span class="skill-tag">HEC-HMS</span>
+                            <span class="skill-tag">SWMM</span>
+                            <span class="skill-tag">SWAT Models</span>
+                            <span class="skill-tag">Auto CAD</span>
+                            <span class="skill-tag">WMS</span>
+                        </div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Hydrological & Hydrulic Modeling</span>
+                            <span class="skill-tag">Water Resource Management</span>
+                            <span class="skill-tag">Data scienence science</span>
+                            <span class="skill-tag">water resources management & analysis</span>
+                            <span class="skill-tag">Remote Sensing</span>
+                            <span class="skill-tag">GIS Analysis</span>
+                        </div>
+                    </div>
+
+                    <div class="education">
+                        <h3>Education</h3>
+                        <div class="education-item">
+                            <div class="degree">Ph.D. in Soil and Water Engineering</div>
+                            <div class="institution">Tamil Nadu Agricultural University, Coimbatore</div>
+                            <div class="year">2023 - Present</div>
+                        </div>
+                        <div class="education-item">
+                            <div class="degree">M.Tech in Soil and Water Engineering</div>
+                            <div class="institution">Odisha University of Agriculture and Technology, Bhubaneswar</div>
+                            <div class="year">2019 - 2021</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="text" placeholder="Subject">
+                        <textarea placeholder="Your Message" required></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>omkardasari.9963@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91 7032190371</p>
+                            <p>+91 8861182873</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Kurnool, Andhra Pradesh, India</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="Facebook">📘</a>
+                        <a href="#" class="social-link" title="Twitter/X">🐦</a>
+                        <a href="#" class="social-link" title="LinkedIn">💼</a>
+                        <a href="#" class="social-link" title="ResearchGate/Google Scholar">👨‍🎓</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Omkar Dasari. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#apps">Applications</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
